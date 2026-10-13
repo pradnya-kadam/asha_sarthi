@@ -1,0 +1,27 @@
+ASHA SARTHI - OFFLINE PHONE MODE
+
+What this version does:
+1. Registration saves the account directly into SQLite on the phone.
+2. Login checks the phone's SQLite database first.
+3. Beneficiaries, visits, pregnancies, children, ASHA workers, messages,
+   notifications and payments use local SQLite first.
+4. Supervisor dashboard reads local SQLite immediately, so counts and details
+   can be shown without Wi-Fi or a browser.
+5. If Internet/server access is available, the app may sync in the background.
+6. No browser is required to run the app.
+
+IMPORTANT:
+- A new phone has its own local database. Data entered on Phone A cannot
+  magically appear on Phone B with Wi-Fi/mobile data disabled.
+- To share the same data between multiple phones, a network/cloud server is
+  required, or the phones need a direct offline transfer mechanism such as
+  Bluetooth/Nearby/QR/export-import.
+- For an existing server account to work offline on a phone, log in once while
+  connected so the credentials are cached, OR create the account from the app
+  while offline. After that, login works offline.
+
+BUILD:
+  build_offline_phone.bat
+
+APK:
+  build\app\outputs\flutter-apk\app-release.apk
