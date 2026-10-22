@@ -1,0 +1,24 @@
+ASHA SARTHI - FAST RUN GUIDE
+
+1) Start MySQL.
+2) Start backend from the backend folder:
+   python -m uvicorn main:app --host 0.0.0.0 --port 8000
+
+3) Find laptop IPv4 with:
+   ipconfig
+
+4) Put phone and laptop on the same Wi-Fi.
+5) Run Flutter on a physical phone:
+   flutter clean
+   flutter pub get
+   flutter run -d RMX3844 --dart-define=API_BASE_URL=http://YOUR_PC_IP:8000
+
+PERFORMANCE FIXES INCLUDED
+- ASHA dashboard loads local SQLite immediately; cloud sync runs in background.
+- Beneficiary save returns immediately after local SQLite write; sync happens in background.
+- Network requests have short timeouts so the UI does not hang for a long time.
+- Supervisor dashboard backend removed expensive per-worker/per-village N+1 SQL queries.
+- Supervisor dashboard initially downloads only a small preview of records.
+- Tapping ASHA Workers / Beneficiaries / Pregnancies / Children / Visits loads the complete list.
+- Supervisor counts still come from the central MySQL database.
+- Offline local data remains available when the server is temporarily unreachable.

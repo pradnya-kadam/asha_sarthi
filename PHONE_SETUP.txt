@@ -1,0 +1,47 @@
+ASHA SARTHI - PHYSICAL PHONE SETUP
+==================================
+
+WHY YOU SAW 10.0.2.2
+---------------------
+10.0.2.2 is the Android Emulator address for the PC's localhost.
+It is NOT the correct address for a real Android phone.
+
+FOR A REAL PHONE
+----------------
+1. Put the phone and PC on the SAME Wi-Fi network.
+2. On Windows PC open CMD and run:
+       ipconfig
+3. Find the active Wi-Fi adapter's IPv4 Address, for example:
+       192.168.1.7
+4. Start the backend from the project:
+       cd backend
+       python -m uvicorn main:app --host 0.0.0.0 --port 8000
+5. On the PC, test in a browser:
+       http://127.0.0.1:8000/
+6. Build the phone APK by double-clicking:
+       build_phone.bat
+   Enter the IPv4 address when asked.
+7. Install:
+       build\app\outputs\flutter-apk\app-release.apk
+
+IMPORTANT WINDOWS FIREWALL
+--------------------------
+If the phone still cannot connect, allow Python through Windows Firewall
+on Private networks, or allow inbound TCP port 8000 for the Python process.
+
+MULTI-DEVICE DATA
+------------------
+The phone uses local SQLite for offline data. When the backend is reachable,
+the app can use FastAPI/MySQL. Multiple phones must point to the SAME PC/server
+URL to see the same server-side data.
+
+USB IS NOT REQUIRED AFTER INSTALLATION
+--------------------------------------
+After the APK is installed, unplugging USB does not remove the app or its
+local SQLite data. USB/ADB is only needed for installation/debugging.
+
+EMULATOR
+--------
+The default remains:
+       http://10.0.2.2:8000
+So the emulator can continue using the existing setup.
